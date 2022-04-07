@@ -1,0 +1,29 @@
+﻿@page "/"
+@inject ApplicationState State
+
+<h3>Hola desde Blazor</h3>
+
+<Counter Value="RootValue" OnCounterUpdated="CounterIncremented" />
+
+<p>Root Value = @RootValue.Data</p>
+
+<button @onclick="Reset">Reset</button>
+
+@code {
+    private IntHolder RootValue { get; set; }
+
+    protected override void OnInitialized()
+    {
+        RootValue = State.CounterState;
+    }
+
+    private void Reset()
+    {
+        RootValue.Data = 0;
+    }
+
+    private void CounterIncremented(int newValue)
+    {
+        RootValue.Data = newValue;
+    }
+}
