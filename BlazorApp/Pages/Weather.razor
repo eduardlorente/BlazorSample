@@ -3,17 +3,17 @@
 
 <h3>Weather</h3>
 
-<ul>
-    @if(Data is null)
-    {
-        <p>Loading data...</p>
-    }else{
+<Loading LoadingData="Data">
+    <NotLoaded>
+        <em>Loading data...</em>
+    </NotLoaded>
+    <Loaded>
         @foreach(var value in Data)
         {
             <li>@value.date: @value.temperatureC (@value.summary)</li>
         }
-    }
-</ul>
+    </Loaded>
+</Loading>
 
 @code {
     private WeatherData[] Data;
